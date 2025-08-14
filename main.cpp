@@ -33,11 +33,11 @@ public:
     }
 
     int hitDamage(int power){
-
         this->health -= power;
         return this->health;
     }
 
+    
 };
 
 
@@ -68,11 +68,13 @@ int main() {
 
     while(1){
         
-        std::cout << player1.getName() << "님! 행위를 고르시오 : (1 공격)"  << std::endl;
+        std::cout << player1.getName() << "님! 행위를 고르시오 : (1 공격, 2. 파워 업(힘 5 증가))"  << std::endl;
         std::cin >> command;
 
         if(command == 1){
             std::cout << "공격 ! player2의 남은 피 : " << player2.hitDamage(player1.getPower()) << std::endl;
+        }else if(command == 2){
+            std::cout << "파워 업 ! player1의 힘 : " << player1.upPower() << std::endl;
         }
 
         if(isDie(player2.getHealth())){
@@ -80,11 +82,13 @@ int main() {
             return 0;
         }
 
-        std::cout << player1.getName() << "님! 행위를 고르시오 : (1 공격)"  << std::endl;
+        std::cout << player2.getName() << "님! 행위를 고르시오 : (1. 공격, 2. 파워 업(힘 5 증가))"  << std::endl;
         std::cin >> command;
         
         if(command == 1){
             std::cout << "공격 ! player1의 남은 피 : " << player1.hitDamage(player2.getPower()) << std::endl;
+        }else if(command == 2){
+            std::cout << "파워 업 ! player2의 힘 : " << player2.upPower() << std::endl;
         }
 
         if(isDie(player1.getHealth())){
