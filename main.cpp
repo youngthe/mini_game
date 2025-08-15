@@ -62,6 +62,10 @@ public:
        return poison_count -= 1;
     }
 
+    //맹독 걸린 효과 해제
+    void clearPoison(){
+        poison_count = 0;
+    }
   
     
 };
@@ -105,7 +109,7 @@ int main() {
         }
 
 
-        std::cout << player1.getName() << "님! 행위를 고르시오 : (1 공격, 2. 파워 업(힘 5 증가), 3. 맹독 피해)"  << std::endl;
+        std::cout << player1.getName() << "님! 행위를 고르시오 : (1 공격, 2. 파워 업(힘 5 증가), 3. 맹독 피해 공격, 4. 맹독 디버프 해제)"  << std::endl;
         std::cin >> command;
 
         if(command == 1){
@@ -114,6 +118,9 @@ int main() {
             std::cout << "파워 업 ! player1의 힘 : " << player1.upPower() << std::endl;
         }else if(command == 3){
             std::cout << "맹독 공격 시전! " << player1.skillPoison() << "회 사용됩니다. "<< std::endl;
+        }else if(command == 4){
+            player2.clearPoison();
+            std::cout << "맹독 디버프 해제!"<< std::endl;
         }
 
 
@@ -122,7 +129,7 @@ int main() {
             return 0;
         }
 
-        std::cout << player2.getName() << "님! 행위를 고르시오 : (1. 공격, 2. 파워 업(힘 5 증가), 3. 맹독 피해 5회)"  << std::endl;
+        std::cout << player2.getName() << "님! 행위를 고르시오 : (1. 공격, 2. 파워 업(힘 5 증가), 3. 맹독 피해 5회, 4. 맹독 디버프 해제)"  << std::endl;
         std::cin >> command;
         
         if(command == 1){
@@ -131,6 +138,9 @@ int main() {
             std::cout << "파워 업 ! player2의 힘 : " << player2.upPower() << std::endl;
         }else if(command == 3){
             std::cout << "맹독 공격 시전!" << player2.skillPoison() << "회 사용됩니다. "<< std::endl;
+        }else if(command == 4){
+            player1.clearPoison();
+            std::cout << "맹독 디버프 해제!"<< std::endl;
         }
 
         if(isDie(player1.getHealth())){
